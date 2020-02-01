@@ -40,6 +40,14 @@ module Erubis
     end
 
     alias u url_encode
+    
+    # @ https://github.com/rails/rails-html-sanitizer
+    # gem install rails-html-sanitizer
+
+    def full_sanitize(value)
+      full_sanitize = Rails::Html::FullSanitizer.new
+      value.present? ? full_sanitize.sanitize(value) : ''
+    end
 
   end
 
